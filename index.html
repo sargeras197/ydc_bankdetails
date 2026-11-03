@@ -383,6 +383,56 @@
             </li>
           </ul>
         </div>
+        <div id="pumb-details" hidden>
+          <div class="bank-heading">
+            <h2>Реквізити ПУМБ</h2>
+            <span class="badge">Дані для оплати</span>
+          </div>
+          <dl>
+            <dt>Отримувач</dt>
+            <dd>ФОП Євдокимов Сергій Олександрович</dd>
+
+            <dt>IBAN</dt>
+            <dd class="value-with-action">
+              <span class="iban">UA 4133 4851 0000 0000 2600 1387 834</span>
+              <button type="button" data-copy="UA413348510000000026001387834">Копіювати</button>
+            </dd>
+
+            <dt>Назва банку</dt>
+            <dd>АТ «ПУМБ»</dd>
+
+            <dt>ЄДРПОУ банку</dt>
+            <dd>334851</dd>
+          </dl>
+
+          <h3 class="purpose-title">Призначення платежу</h3>
+          <ul class="purpose-list">
+            <li>
+              <span>За послуги комп'ютерного програмування</span>
+              <button type="button" data-copy="За послуги комп'ютерного програмування">Копіювати</button>
+            </li>
+            <li>
+              <span>За послуги консультування з питань інформатизації</span>
+              <button type="button" data-copy="За послуги консультування з питань інформатизації">Копіювати</button>
+            </li>
+            <li>
+              <span>За послуги ремонту комп'ютерів і периферійного устатковання</span>
+              <button type="button" data-copy="За послуги ремонту комп'ютерів і периферійного устатковання">Копіювати</button>
+            </li>
+            <li>
+              <span>За дизайнерські послуги</span>
+              <button type="button" data-copy="За дизайнерські послуги">Копіювати</button>
+            </li>
+            <li>
+              <span>За послуги у сфері інформаційних технологій і комп'ютерних систем</span>
+              <button type="button" data-copy="За послуги у сфері інформаційних технологій і комп'ютерних систем">Копіювати</button>
+            </li>
+            <li>
+              <span>За послуги з оброблення даних</span>
+              <button type="button" data-copy="За послуги з оброблення даних">Копіювати</button>
+            </li>
+          </ul>
+        </div>
         <p id="missing-state" class="notice" hidden>Реквізити для цього банку ще не додані.</p>
         <p id="copy-status" class="status" role="status" aria-live="polite"></p>
       </div>
@@ -394,6 +444,7 @@
     const emptyState = document.querySelector("#empty-state");
     const bankDetails = document.querySelector("#bank-details");
     const abankDetails = document.querySelector("#abank-details");
+    const pumbDetails = document.querySelector("#pumb-details");
     const missingState = document.querySelector("#missing-state");
     const copyStatus = document.querySelector("#copy-status");
 
@@ -402,7 +453,8 @@
       emptyState.hidden = Boolean(selection);
       bankDetails.hidden = selection !== "monobank";
       abankDetails.hidden = selection !== "abank";
-      missingState.hidden = !selection || selection === "monobank" || selection === "abank";
+      pumbDetails.hidden = selection !== "pumb";
+      missingState.hidden = !selection || selection === "monobank" || selection === "abank" || selection === "pumb";
       copyStatus.textContent = "";
     });
 
